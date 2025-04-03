@@ -5,225 +5,430 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MADAVISION - Agence événementielle à Antananarivo</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-<body>
-    <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<style>
+    /* Reset CSS */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
 
-        body {
-            background-color: #0e0e0e;
-            color: white;
-        }
+    body {
+        background-color: #0e0e0e;
+        color: white;
+    }
 
-        /* Header principal */
-        .header {
-            background: linear-gradient(rgba(0, 27, 71, 0.8), rgba(0, 27, 71, 0.8)), url('../assets/images/image_principale.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 40px 0;
-            height: 90vh; /* Réduit la hauteur du header */
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    /* Header principal */
+    .header {
+        background: linear-gradient(rgba(0, 27, 71, 0.8), rgba(0, 27, 71, 0.8)), url('../assets/images/image_principale.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 40px 0;
+        height: 90vh;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
-        /* Structure du menu de navigation */
+    /* Structure du menu de navigation */
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5%;
+        width: 100%;
+    }
+
+    /* Logo */
+    .logo-container {
+        align-self: flex-start;
+    }
+
+    .logo-container img {
+        height: 60px;
+    }
+
+    /* Menu de navigation */
+    .menu-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    /* Lignes horizontales pour le menu */
+    .top-line, .bottom-line {
+        width: 350px;
+        height: 1px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    /* Barre de navigation du header */
+    .header-nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        margin: 5px 0;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        margin-right: 80px;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-left: 80px;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    /* Section du contenu principal */
+    .main-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5%;
+        margin: 40px 0;
+    }
+
+    .title-section {
+        width: 50%;
+    }
+
+    .agency-info {
+        color: white;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .brand-name {
+        font-size: 60px;
+        font-weight: bold;
+        color: white;
+        letter-spacing: 2px;
+    }
+
+    .description-section {
+        width: 42%;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 30px;
+        background-color: rgba(0, 27, 71, 0.4);
+    }
+
+    .description-text {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    /* Ligne séparatrice en bas */
+    .separator {
+        width: 70%;
+        height: 1px;
+        background-color: rgb(255, 255, 255);
+        margin: 0 auto -10px;
+    }
+
+    /* Styles pour la section événements 2025 */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+    
+    .events-container {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 900;
+        font-style: normal;
+        background: #000;
+        overflow: hidden;
+        cursor: none;
+        height: 70vh;
+        position: relative;
+    }
+    
+    .events-container svg {
+        width: 100%;
+        height: 70vh;
+        perspective: 1000px;
+    }
+    
+    .events-container text {
+        dominant-baseline: middle;
+        text-anchor: middle;
+    }
+    
+    .cursor {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        mix-blend-mode: difference;
+        z-index: 9999;
+        box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.3);
+    }
+    
+    .glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba(0, 30, 90, 0.2), transparent 50%);
+        pointer-events: none;
+        mix-blend-mode: screen;
+        z-index: 1;
+    }
+    
+    /* Étoiles pour le fond */
+    .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+    }
+    
+    .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: #fff;
+        border-radius: 50%;
+        opacity: 0;
+    }
+    
+    /* Vagues d'arrière-plan */
+    .waves {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50vh;
+        z-index: 0;
+        opacity: 0.15;
+        pointer-events: none;
+    }
+    
+    .wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 200%;
+        height: 20vh;
+        background: linear-gradient(to top, rgba(0, 50, 150, 0.5), transparent);
+        border-radius: 100%;
+    }
+
+    /* Media queries pour grand écrans (>1900px) */
+    @media screen and (min-width: 1901px) {
         .nav-container {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 100px;
+            padding: 0 10%;
         }
-
-        /* Logo */
-        .logo-container {
-            align-self: flex-start;
-        }
-
+        
         .logo-container img {
-            height: 60px; /* Taille du logo augmentée à 80px */
+            height: 80px;
         }
-
-        /* Menu de navigation */
-        .menu-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        /* Lignes horizontales pour le menu */
+        
         .top-line, .bottom-line {
-            width: 350px; /* Largeur ajustée pour correspondre au menu */
-            height: 1px;
-            background-color: rgb(255, 255, 255);
+            width: 450px;
         }
-
-        /* Barre de navigation du header */
-        .header-nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            margin: 5px 0;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            margin-right: 80px;
-        }
-
+        
         .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 80px; /* Augmentation de l'espacement */
-            font-weight: 500;
-            font-size: 18px; /* Agrandissement du texte du menu */
+            font-size: 22px;
+            margin-left: 100px;
         }
-
-        /* Section du contenu principal */
+        
         .main-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 100px;
-            margin: 40px 0;
+            padding: 0 10%;
+            margin: 60px 0;
         }
-
-        .title-section {
-            width: 50%; /* Augmentation de la largeur pour le titre */
-        }
-
+        
         .agency-info {
-            color: white;
-            font-size: 16px; /* Légèrement plus grand */
-            margin-bottom: 20px;
+            font-size: 20px;
         }
-
+        
         .brand-name {
-            font-size: 60px; /* Agrandissement du titre */
-            font-weight: bold;
-            color: white;
-            letter-spacing: 2px;
+            font-size: 80px;
         }
-
+        
         .description-section {
-            width: 42%; /* Légère réduction de la largeur */
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 30px 30px; /* Augmentation de la hauteur */
-            background-color: rgba(0, 27, 71, 0.4);
+            padding: 40px;
         }
-
+        
         .description-text {
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 20px;
+            line-height: 1.8;
         }
 
-        /* Ligne séparatrice en bas */
-        .separator {
-            width: 70%;
-            height: 1px;
-            background-color: rgb(255, 255, 255);
-            margin: 0px auto -10px;
-        }
-
-        /* Styles pour la section événements 2025 */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
-        
-        .events-container {
-            font-family: "Montserrat", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 900;
-            font-style: normal;
-            background:#000;
-            overflow:hidden;
-            cursor: none;
-            height: 70vh;
-            position: relative;
-        }
-        
         .events-container svg {
-            width: 100%;
-            height: 70vh;
-            perspective: 1000px;
+            height: 80vh;
         }
         
         .events-container text {
-            dominant-baseline: middle;
-            text-anchor: middle;
+            font-size: 120px;
+        }
+    }
+
+    /* Media queries pour tablettes */
+    @media screen and (max-width: 1024px) {
+        .header {
+            height: auto;
+            min-height: 90vh;
         }
         
-        .cursor {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            mix-blend-mode: difference;
-            z-index: 9999;
-            box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.3);
+        .nav-container {
+            padding: 0 5%;
         }
         
-        .glow {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .top-line, .bottom-line {
+            width: 280px;
+        }
+        
+        .nav-links {
+            margin-right: 40px;
+        }
+        
+        .nav-links a {
+            margin-left: 40px;
+            font-size: 16px;
+        }
+        
+        .main-content {
+            flex-direction: column;
+            padding: 0 5%;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .title-section, .description-section {
+            width: 90%;
+            margin-bottom: 20px;
+        }
+        
+        .brand-name {
+            font-size: 50px;
+        }
+        
+        .events-container {
+            height: 60vh;
+        }
+        
+        .events-container svg {
+            height: 60vh;
+        }
+        
+        .events-container text {
+            font-size: 100px;
+        }
+    }
+
+    /* Media queries pour mobiles */
+    @media screen and (max-width: 768px) {
+        .header {
+            padding: 20px 0;
+        }
+        
+        .nav-container {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo-container {
+            margin-bottom: 20px;
+            align-self: center;
+        }
+        
+        .menu-container {
+            align-items: center;
             width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(0, 30, 90, 0.2), transparent 50%);
-            pointer-events: none;
-            mix-blend-mode: screen;
-            z-index: 1;
         }
         
-        /* Étoiles pour le fond */
-        .stars {
-            position: absolute;
+        .top-line, .bottom-line {
+            width: 90%;
+            max-width: 500px;
+        }
+        
+        .header-nav {
             width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
         }
         
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #fff;
-            border-radius: 50%;
-            opacity: 0;
-        }
-        
-        /* Vagues d'arrière-plan */
-        .waves {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        .nav-links {
             width: 100%;
+            justify-content: center;
+            margin-right: 0;
+        }
+        
+        .nav-links a {
+            margin: 0 20px;
+            font-size: 16px;
+        }
+        
+        .main-content {
+            flex-direction: column;
+            padding: 0 5%;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .title-section, .description-section {
+            width: 100%;
+        }
+        
+        .brand-name {
+            font-size: 40px;
+        }
+        
+        .agency-info {
+            font-size: 14px;
+        }
+        
+        .description-section {
+            padding: 20px;
+        }
+        
+        .description-text {
+            font-size: 14px;
+        }
+        
+        .separator {
+            width: 90%;
+        }
+        
+        .events-container {
             height: 50vh;
-            z-index: 0;
-            opacity: 0.15;
-            pointer-events: none;
         }
         
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 20vh;
-            background: linear-gradient(to top, rgba(0, 50, 150, 0.5), transparent);
-            border-radius: 100%;
+        .events-container svg {
+            height: 50vh;
         }
-    </style>
-    
+        
+        .events-container text {
+            font-size: 100px;
+        }
+    }
+
+    /* Media queries pour petits mobiles */
+    @media screen and (max-width: 480px) {
+        .brand-name {
+            font-size: 32px;
+        }
+        
+        .events-container text {
+            font-size: 80px;
+        }
+        
+        .nav-links a {
+            margin: 0 10px;
+            font-size: 14px;
+        }
+    }
+</style>
+</head>
+<body>
     <!-- Section Header -->
     <header class="header">
         <!-- Structure de navigation avec logo et menu séparés -->
@@ -554,6 +759,49 @@
                 ease: 'elastic.out(1, 0.3)'
             });
         });
+
+ // Animation d'entrée pour le logo
+ gsap.from('.logo-container', {
+        opacity: 0,
+        y: -50,
+        duration: 1,
+        delay: 0.5
+    });
+
+    // Animation d'entrée pour le texte
+    gsap.from('.agency-info', {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        delay: 1
+    });
+
+    gsap.from('.brand-name', {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        delay: 1.5
+    });
+
+    // Animation d'entrée pour le menu
+    gsap.from('.nav-container', {
+        opacity: 0,
+        y: -30,
+        duration: 1,
+        delay: 1.5,
+        ease: 'power2.out'
+    });
+
+    // Animation d'entrée pour la description
+    gsap.from('.description-section', {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        delay: 2,
+        ease: 'power2.out'
+    });
+
+
     </script>
 </body>
 </html>
