@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADAVISION - Agence événementielle à Antananarivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/madavision.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&family=Prompt:wght@700&family=Lato:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Section Opportunités -->
+<section class="opportunities">
+    <div class="container">
+        <!-- Texte et bouton à gauche -->
+        <div class="opportunities-content">
+            <h2 class="section-title">MADAVISION</h2>
+            <p class="section-description">Opportunités d'affaires, partenariats stratégiques et échanges constructifs vous attendent !</p>
+            <a href="#" class="learn-more-btn">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Grille des événements à droite -->
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-image" style="background-image: url('../assets/images/image_principale.jpg');">
+                    <div class="event-overlay">
+                        <div class="event-title">
+                            <h3>Foire International<br>De Madagascar</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image" style="background-image: url('../assets/images/pexels-pixabay-265216.jpg');">
+                    <div class="event-overlay">
+                        <div class="event-title">
+                            <h3>Foire International<br>De l'agriculture</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image" style="background-image: url('../assets/images/pexels-klaus-nielsen-6287220.jpg');">
+                    <div class="event-overlay">
+                        <div class="event-title">
+                            <h3>Festival International de<br>la Gastronomie<br> de Madagascar</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image" style="background-image: url('../assets/images/pexels-rquiros-2219024.jpg');">
+                    <div class="event-overlay">
+                        <div class="event-title">
+                            <h3>Salon International<br> de l'habitat</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.event-card');
+    
+    // Animation d'apparition des cartes
+    function animateCards() {
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, index * 150);
+        });
+    }
+    
+    // Lancer l'animation après un court délai
+    setTimeout(animateCards, 300);
+    
+    // Effet hover amélioré
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.classList.add('hover');
+        });
+        card.addEventListener('mouseleave', function() {
+            this.classList.remove('hover');
+        });
+    });
+    
+    // Animation au scroll (effet d'apparition)
+    function checkScroll() {
+        const triggerBottom = window.innerHeight * 0.9;
+        
+        cards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            
+            if (cardTop < triggerBottom) {
+                card.classList.add('visible');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', checkScroll);
+    checkScroll(); // Vérifier au chargement initial
+});
+</script>
+
+</body>
+</html>
