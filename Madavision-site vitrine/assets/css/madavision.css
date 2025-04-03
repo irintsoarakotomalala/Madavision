@@ -202,6 +202,7 @@ html, body {
     line-height: 1.4;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombre du texte plus prononcée */
     word-wrap: break-word; /* Permet au texte de passer à la ligne */
+    -webkit-hyphens: auto; /* For Safari */
     hyphens: auto; /* Ajout de tirets pour les mots longs si nécessaire */
     overflow-wrap: break-word; /* Assure que les mots longs passent à la ligne */
 }
