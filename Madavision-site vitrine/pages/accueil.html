@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADAVISION - Agence événementielle à Antananarivo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<body>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0e0e0e;
+            color: white;
+        }
+
+        /* Header principal */
+        .header {
+            background: linear-gradient(rgba(0, 27, 71, 0.8), rgba(0, 27, 71, 0.8)), url('../assets/images/image_principale.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 40px 0;
+            height: 90vh; /* Réduit la hauteur du header */
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Structure du menu de navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 100px;
+        }
+
+        /* Logo */
+        .logo-container {
+            align-self: flex-start;
+        }
+
+        .logo-container img {
+            height: 60px; /* Taille du logo augmentée à 80px */
+        }
+
+        /* Menu de navigation */
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        /* Lignes horizontales pour le menu */
+        .top-line, .bottom-line {
+            width: 350px; /* Largeur ajustée pour correspondre au menu */
+            height: 1px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        /* Barre de navigation du header */
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            margin: 5px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            margin-right: 80px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 80px; /* Augmentation de l'espacement */
+            font-weight: 500;
+            font-size: 18px; /* Agrandissement du texte du menu */
+        }
+
+        /* Section du contenu principal */
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 100px;
+            margin: 40px 0;
+        }
+
+        .title-section {
+            width: 50%; /* Augmentation de la largeur pour le titre */
+        }
+
+        .agency-info {
+            color: white;
+            font-size: 16px; /* Légèrement plus grand */
+            margin-bottom: 20px;
+        }
+
+        .brand-name {
+            font-size: 60px; /* Agrandissement du titre */
+            font-weight: bold;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .description-section {
+            width: 42%; /* Légère réduction de la largeur */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 30px 30px; /* Augmentation de la hauteur */
+            background-color: rgba(0, 27, 71, 0.4);
+        }
+
+        .description-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Ligne séparatrice en bas */
+        .separator {
+            width: 70%;
+            height: 1px;
+            background-color: rgb(255, 255, 255);
+            margin: 0px auto -10px;
+        }
+
+        /* Styles pour la section événements 2025 */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+        
+        .events-container {
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 900;
+            font-style: normal;
+            background:#000;
+            overflow:hidden;
+            cursor: none;
+            height: 70vh;
+            position: relative;
+        }
+        
+        .events-container svg {
+            width: 100%;
+            height: 70vh;
+            perspective: 1000px;
+        }
+        
+        .events-container text {
+            dominant-baseline: middle;
+            text-anchor: middle;
+        }
+        
+        .cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 9999;
+            box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.3);
+        }
+        
+        .glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 30, 90, 0.2), transparent 50%);
+            pointer-events: none;
+            mix-blend-mode: screen;
+            z-index: 1;
+        }
+        
+        /* Étoiles pour le fond */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0;
+        }
+        
+        /* Vagues d'arrière-plan */
+        .waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            z-index: 0;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 20vh;
+            background: linear-gradient(to top, rgba(0, 50, 150, 0.5), transparent);
+            border-radius: 100%;
+        }
+    </style>
+    
+    <!-- Section Header -->
+    <header class="header">
+        <!-- Structure de navigation avec logo et menu séparés -->
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="../assets/logos/logo_madavision.png" alt="MADAVISION Logo">
+            </div>
+            <div class="menu-container">
+                <div class="top-line"></div>
+                <div class="header-nav">
+                    <div class="nav-links">
+                        <a href="#">Accueil</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+                <div class="bottom-line"></div>
+            </div>
+        </div>
+
+        <!-- Contenu principal -->
+        <div class="main-content">
+            <div class="title-section">
+                <p class="agency-info">Agence événementielle - Antananarivo</p>
+                <h1 class="brand-name">MADAVISION</h1>
+            </div>
+            <div class="description-section">
+                <p class="description-text">L'incontournable agence organisatrice d'événements à Madagascar est très connue pour son rôle de facilitatrice pour toute organisation événementielle à caractère commerciale et relation publique à travers des offres diverses et variées.</p>
+            </div>
+        </div>
+
+        <!-- Ligne séparatrice -->
+        <div class="separator"></div>
+    </header>
+
+    <!-- Section des grands événements 2025 -->
+    <div class="events-container">
+        <div class="cursor"></div>
+        <div class="glow"></div>
+        <div class="stars"></div>
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+        </div>
+        
+        <svg viewBox="0 0 1280 720">
+            <defs>
+                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#002966" />
+                    <stop offset="100%" stop-color="#0066cc" />
+                </linearGradient>
+                <linearGradient id="gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#aaaaaa" />
+                    <stop offset="100%" stop-color="#444444" />
+                </linearGradient>
+                <filter id="blur">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+                </filter>
+            </defs>
+            
+            <mask id="maskLeft">
+                <rect x="0" y="0" width="50%" height="100%" fill="#fff"/>
+            </mask>
+            <mask id="maskRight">
+                <rect x="50%" y="0" width="50%" height="100%" fill="#fff"/>
+            </mask>
+            
+            <g font-size="100" text-anchor="middle" class="container">
+                <g mask="url(#maskLeft)" fill="url(#gradient1)" class="left">
+                    <text x="640" y="220" class="text1">LES GRANDS</text>
+                    <text x="640" y="360" class="text2">ÉVÈNEMENTS</text>
+                    <text x="640" y="500" class="text3">DE 2025</text>
+                </g>
+                <g mask="url(#maskRight)" fill="url(#gradient2)" class="right">
+                    <text x="640" y="220" class="text1">LES GRANDS</text>
+                    <text x="640" y="360" class="text2">ÉVÈNEMENTS</text>
+                    <text x="640" y="500" class="text3">DE 2025</text>
+                </g>
+                
+                <g class="shadow" opacity="0.2" transform="translate(5,5)" filter="url(#blur)">
+                    <text x="640" y="220" fill="#000">LES GRANDS</text>
+                    <text x="640" y="360" fill="#000">ÉVÈNEMENTS</text>
+                    <text x="640" y="500" fill="#000">DE 2025</text>
+                </g>
+            </g>
+        </svg>
+    </div>
+
+    <script>
+        // Créer des étoiles pour le fond
+        const starsContainer = document.querySelector('.stars');
+        for(let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.width = `${Math.random() * 3}px`;
+            star.style.height = star.style.width;
+            starsContainer.appendChild(star);
+            
+            // Animation scintillante des étoiles
+            gsap.to(star, {
+                opacity: Math.random() * 0.8 + 0.2,
+                duration: Math.random() * 3 + 1,
+                repeat: -1,
+                yoyo: true,
+                delay: Math.random() * 3
+            });
+        }
+        
+        // Animation des vagues
+        gsap.to('#wave1', {
+            x: '-50%',
+            repeat: -1,
+            duration: 20,
+            ease: 'linear'
+        });
+        
+        gsap.to('#wave2', {
+            x: '-30%',
+            repeat: -1,
+            duration: 15,
+            ease: 'linear',
+            opacity: 0.6
+        });
+        
+        gsap.to('#wave3', {
+            x: '-70%',
+            repeat: -1,
+            duration: 25,
+            ease: 'linear',
+            opacity: 0.3
+        });
+        
+        // Créer les animations de base
+        gsap.set('.container', { transformPerspective: 1000 });
+        
+        const tl = gsap.timeline({
+            defaults:{
+                duration: 2,
+                yoyo: true,
+                ease: 'power2.inOut',
+                repeat: -1
+            }
+        })
+        .fromTo('.left', {
+            svgOrigin: '640 360',
+            skewY: -10,
+            scaleX: 0.8,
+            x: 20
+        }, {
+            skewY: -5,
+            scaleX: 0.9,
+            x: -20
+        }, 0)
+        .fromTo('.right', {
+            svgOrigin: '640 360',
+            skewY: 10,
+            scaleX: 0.8,
+            x: -20
+        }, {
+            skewY: 5,
+            scaleX: 0.9,
+            x: 20
+        }, 0);
+        
+        // Animation d'entrée améliorée pour le texte
+        const tl2 = gsap.timeline();
+        
+        // Animation des lignes de texte avec effet plus doux
+        gsap.set('.text1, .text2, .text3', { opacity: 0, y: 50, rotateX: 45 });
+        
+        // Animation plus douce et séquentielle
+        tl2.to('.text1', {
+            duration: 2,
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            ease: 'power3.out',
+            onStart: () => {
+                // Effet de lumière à l'apparition
+                gsap.to('.glow', {
+                    background: 'radial-gradient(circle at center, rgba(0, 30, 90, 0.4), transparent 70%)',
+                    duration: 1.5,
+                    ease: 'power2.inOut'
+                });
+            }
+        })
+        .to('.text2', {
+            duration: 2,
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            ease: 'power3.out',
+            delay: -1.5
+        })
+        .to('.text3', {
+            duration: 2,
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            ease: 'power3.out',
+            delay: -1.5,
+            onComplete: () => {
+                // Effet plus doux à la fin de l'animation
+                gsap.to('.container', {
+                    duration: 1,
+                    scale: 1.02,
+                    yoyo: true,
+                    repeat: 1,
+                    ease: 'power2.inOut'
+                });
+                
+                // Accentuation de la luminosité
+                gsap.to('.glow', {
+                    background: 'radial-gradient(circle at center, rgba(0, 30, 90, 0.6), transparent 80%)',
+                    duration: 1,
+                    yoyo: true,
+                    repeat: 1,
+                    ease: 'power2.inOut'
+                });
+            }
+        });
+        
+        // Créer le curseur personnalisé
+        const cursor = document.querySelector('.cursor');
+        const glow = document.querySelector('.glow');
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        let currentX = 0;
+        let currentY = 0;
+        
+        // Suivi de la souris fluide
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Animer le fond lumineux
+            gsap.to(glow, {
+                background: `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, rgba(0, 30, 90, 0.2), transparent 70%)`,
+                duration: 0.5
+            });
+        });
+        
+        // Animation du curseur
+        gsap.ticker.add(() => {
+            // Mouvement fluide du curseur
+            const deltaX = mouseX - currentX;
+            const deltaY = mouseY - currentY;
+            
+            currentX += deltaX * 0.2;
+            currentY += deltaY * 0.2;
+            
+            cursor.style.left = `${currentX}px`;
+            cursor.style.top = `${currentY}px`;
+            
+            // Convertir la position en valeurs -1 à 1
+            const normalizedX = (mouseX / window.innerWidth - 0.5) * 2;
+            const normalizedY = (mouseY / window.innerHeight - 0.5) * 2;
+            
+            // Animation 3D avancée
+            gsap.to('.container', {
+                rotateY: normalizedX * 15,
+                rotateX: -normalizedY * 10,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+            
+            // Effets différents pour les deux côtés
+            gsap.to('.left', {
+                skewY: -10 - normalizedX * 15,
+                scaleX: 0.85 - normalizedX * 0.1,
+                x: -normalizedX * 100,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+            
+            gsap.to('.right', {
+                skewY: 10 - normalizedX * 15,
+                scaleX: 0.85 + normalizedX * 0.1,
+                x: -normalizedX * 100,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+            
+            // Effet sur les ombres
+            gsap.to('.shadow', {
+                x: 5 + normalizedX * 10,
+                y: 5 + normalizedY * 10,
+                opacity: 0.2 + Math.abs(normalizedX * 0.1),
+                duration: 0.8
+            });
+            
+            // Effet sur le curseur
+            gsap.to(cursor, {
+                scale: 1 + Math.abs(normalizedX * 0.5) + Math.abs(normalizedY * 0.5),
+                borderColor: `rgba(255, 255, 255, ${0.5 + Math.abs(normalizedX * 0.5)})`,
+                duration: 0.3
+            });
+        });
+        
+        // Animation spéciale quand l'utilisateur clique
+        window.addEventListener('mousedown', () => {
+            gsap.to(cursor, {
+                scale: 0.8,
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                duration: 0.3
+            });
+            
+            gsap.to('.container', {
+                scale: 0.95,
+                duration: 0.3,
+                ease: 'power2.inOut'
+            });
+        });
+        
+        window.addEventListener('mouseup', () => {
+            gsap.to(cursor, {
+                scale: 1,
+                backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                duration: 0.3
+            });
+            
+            gsap.to('.container', {
+                scale: 1,
+                duration: 0.5,
+                ease: 'elastic.out(1, 0.3)'
+            });
+        });
+    </script>
+</body>
+</html>
