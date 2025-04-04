@@ -151,37 +151,147 @@ body {
 }
 
 /* SECTION DATE AU MILIEU */
-.date-container {
-    position: absolute; /* Positionnement absolu */
-    top: 50%; /* Ajustez cette valeur pour déplacer verticalement */
-    left: 50%; /* Centre horizontalement */
-    transform: translate(-50%, -50%); /* Centre parfaitement */
-    background: rgba(255, 255, 255, 0.9); /* Fond blanc avec une légère transparence */
-    color: #155D97; /* Couleur du texte */
-    padding: 10px 20px; /* Espace intérieur */
-    border-radius: 10px; /* Coins arrondis */
-    text-align: center; /* Centre le texte */
-    z-index: 1; /* Assure que la date est au-dessus des sections */
-    animation: fade-in 1s ease forwards, pulse 2s infinite; /* Ajoute l'animation d'apparition et de pulsation */
+.event-date {
+    font-size: 32px; /* Taille de police initiale */
+    color: #ffffff; /* Couleur du texte initiale (blanc) */
+    text-align: center;
+    margin: 0;
+    position: absolute; /* Garder la position absolue */
+    top: 400px; /* Garder la même valeur pour la position verticale */
+    left: 40%; /* Centrer horizontalement */
+    transform: translateX(-50%); /* Ajuster pour centrer */
+    background: rgba(10, 29, 59, 0.7); /* Couleur de fond initiale */
+    padding: 10px;
+    border-radius: 10px;
+    animation: bounce 1.5s ease-in-out infinite, color-change 3s ease infinite; /* Ajout d'animations continues */
+    z-index: 10;
 }
 
-.date-container h2 {
-    font-size: 32px; /* Taille de la police */
-    margin: 0; /* Supprime la marge par défaut */
-    font-family: 'Urbanist', sans-serif; /* Police */
-    font-weight: 700; /* Gras */
-}
-
-/* Animation de pulsation */
-@keyframes pulse {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
+/* Animation de rebond */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
     }
     50% {
-        transform: translate(-50%, -50%) scale(1.05); /* Légère augmentation de la taille */
+        transform: translateY(-10px);
+    }
+}
+
+/* Animation de changement de couleur */
+@keyframes color-change {
+    0% {
+        color: #ffffff; /* Couleur du texte initiale (blanc) */
+        background: rgba(10, 29, 59, 0.7); /* Couleur de fond initiale */
+    }
+    50% {
+        color: #13134b; /* Couleur du texte (bleu) */
+        background: #ffffff; /* Couleur de fond (blanc) */
     }
     100% {
-        transform: translate(-50%, -50%) scale(1);
+        color: #ffffff; /* Retour à la couleur du texte initiale (blanc) */
+        background: rgba(10, 29, 59, 0.7); /* Retour à la couleur de fond initiale */
+    }
+}
+
+/* Media Queries pour la responsivité */
+@media (max-width: 1500px) {
+    .fia-section {
+        padding: 80px 8%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .fia-section {
+        padding: 70px 6%;
+    }
+}
+
+@media (max-width: 992px) {
+    .fia-section {
+        flex-direction: column;
+        padding: 60px 5%;
+        text-align: center;
+    }
+
+    .fia-content, .fia-images {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .fia-content h1 {
+        font-size: 24px;
+    }
+
+    .fia-content p {
+        font-size: 15px;
+    }
+
+    .image-top {
+        width: 220px;
+    }
+
+    .image-bottom {
+        width: 180px;
+        top: 60px;
+        left: 175px;
+    }
+}
+
+@media (max-width: 768px) {
+    .fia-section {
+        padding: 40px 5%;
+    }
+
+    .fia-content, .fia-images {
+        width: 100%;
+    }
+
+    .cta-btn {
+        width: 22%;
+        text-align: center;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 743px) {
+    .cta-btn {
+        width: 200px; /* Garder la même taille pour le bouton */
+        margin: 0 auto; /* Centrer le bouton */
+    }
+
+    .fia-images {
+        display: grid; /* Utiliser une grille pour les images */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajuster la grille pour les images */
+        gap: 10px; /* Espace entre les images */
+    }
+
+    .fia-images img {
+        height: auto; /* Garder les proportions des images */
+    }
+}
+
+@media (max-width: 576px) {
+    .fia-content h1 {
+        font-size: 20px;
+    }
+
+    .fia-content p {
+        font-size: 14px;
+    }
+
+    .image-top {
+        width: 180px;
+    }
+
+    .image-bottom {
+        width: 140px;
+        top: 40px;
+        left: -20px;
+    }
+
+    .cta-btn {
+        font-size: 14px;
+        padding: 10px;
     }
 }
 
@@ -314,7 +424,23 @@ body {
         padding-right: 0;
         margin-bottom: 30px;
     }
-    
+
+    .gastronomie-section .cta-btn {
+        width: 200px; /* Garder la même taille pour le bouton */
+        margin: 0 auto; /* Centrer le bouton */
+    }
+
+    .gastronomie-images {
+        display: grid; /* Utiliser une grille pour les images */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajuster la grille pour les images */
+        gap: 10px; /* Espace entre les images */
+    }
+
+    .gastronomie-images img {
+        width: 100%; /* S'assurer que les images remplissent leur conteneur */
+        height: auto; /* Garder les proportions des images */
+    }
+
     .white-corner {
         right: 20px;
         bottom: 20px;
@@ -345,112 +471,5 @@ body {
     .gastronomie-section .cta-btn {
         padding: 12px 24px;
         font-size: 14px;
-    }
-}
-
-
-@media screen and (max-width: 992px) {
-    .fia-section {
-        flex-direction: column;
-        padding: 60px 5%;
-        text-align: center;
-    }
-
-    .fia-content, .fia-images {
-        width: 100%;
-        margin-bottom: 30px;
-    }
-
-    .fia-content h1 {
-        font-size: 24px;
-    }
-
-    .fia-content p {
-        font-size: 15px;
-    }
-
-    .image-top {
-        width: 220px;
-    }
-
-    .image-bottom {
-        width: 180px;
-        top: 60px;
-        left: -30px;
-    }
-
-    .date-container h2 {
-        font-size: 24px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .fia-section,
-    .gastronomie-section {
-        flex-direction: column;
-        padding: 40px 5%;
-        text-align: center;
-    }
-
-    .fia-content, .gastronomie-content,
-    .fia-images {
-        width: 100%;
-    }
-
-    .cta-btn {
-        width: 100%;
-        text-align: center;
-        padding: 12px;
-    }
-
-    .white-corner {
-        bottom: 20px;
-        right: 20px;
-        width: 4px;
-        height: 100px;
-    }
-
-    .white-corner::after {
-        width: 100px;
-        height: 4px;
-    }
-
-    .date-container {
-        padding: 8px 16px;
-    }
-
-    .date-container h2 {
-        font-size: 20px;
-    }
-}
-
-@media screen and (max-width: 576px) {
-    .fia-content h1,
-    .gastronomie-content h1 {
-        font-size: 20px;
-    }
-
-    .fia-content p,
-    .gastronomie-content p {
-        font-size: 14px;
-    }
-
-    .image-top {
-        width: 180px;
-    }
-
-    .image-bottom {
-        width: 140px;
-        top: 40px;
-        left: -20px;
-    }
-
-    .cta-btn {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    .date-container h2 {
-        font-size: 18px;
     }
 }
