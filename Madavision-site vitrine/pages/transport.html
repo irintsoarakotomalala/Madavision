@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements - Salon du Transport et Motors Festival</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/transport.css">
+</head>
+<body>
+    <div class="evenement-wrapper">
+        <div class="combined-section" style="position: relative;"> <!-- Ajout de position relative ici -->
+            <!-- Date de l'événement -->
+            <div class="event-date fade-in">18 - 21 Septembre 2025</div>
+
+            <!-- Section Salon du Transport -->
+            <section class="transport-section">
+                <div class="transport-content">
+                    <h1 class="fade-in">🚚 Salon du transport de la logistique et de la manutention</h1>
+                    <p class="fade-in">Découvrez le Salon International des Transports, de la Logistique et de la Manutention (SITLM), l'événement incontournable pour les acteurs du secteur des transports à Madagascar. Rejoignez-nous pour explorer les dernières innovations, échanger avec les experts et façonner l'avenir du transport dans un cadre dynamique et stimulant.</p>
+                    <button class="cta-btn" title="À venir">
+                        S'inscrire →
+                        <span class="tooltip">À venir</span>
+                    </button>   
+                </div>
+                <div class="transport-image">
+                    <img src="../assets/images/pexels-tima-miroshnichenko-6169186.jpg" alt="Transport et logistique - Ouvrier déplaçant des colis" />
+                </div>
+            </section>
+    
+            <section class="motors-section">
+                <div class="motors-content">
+                    <h1 class="fade-in">🚗 Motors Festival</h1>
+                    <button class="cta-btn" title="À venir">
+                        S'inscrire →
+                        <span class="tooltip">À venir</span>
+                    </button>  
+                </div>
+                <div class="motors-images">
+                    <img src="../assets/images/pexels-brett-sayles-3653997.jpg" alt="Pattern géométrique" class="motors-image-main" />
+                    <img src="../assets/images/gma-central-feature-03.jpg" alt="Voitures de collection" class="motors-image-secondary" />
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const textElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Ne pas réinitialiser l'animation pour éviter les répétitions
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            textElements.forEach(text => {
+                observer.observe(text);
+            });
+        });
+    </script>
+</body>
+</html>

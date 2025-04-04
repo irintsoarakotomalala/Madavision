@@ -1,0 +1,327 @@
+/* Général */
+body {
+    font-family: 'Urbanist', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* Animation d'apparition douce */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fade-in 1s ease forwards;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation de vague lumineuse subtile */
+@keyframes subtle-wave {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Conteneur principal pour les sections */
+.evenement-wrapper {
+    position: relative;
+    color: #fff;
+}
+
+/* Effet de dégradé lumineux discret à la séparation des sections */
+.section-divider {
+    height: 10px; /* Hauteur réduite */
+    background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0) 0%, /* Transparent */
+                rgba(255, 255, 255, 0.1) 50%, /* Dégradé léger */
+                rgba(255, 255, 255, 0) 100%); /* Transparent */
+    background-size: 200% 200%;
+    animation: subtle-wave 12s ease infinite; /* Animation plus lente */
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+/* SECTION SALON DU TRANSPORT */
+.transport-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 93px 10%;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #000000, #0a1d3b);
+    margin: 0;
+}
+
+.transport-content {
+    width: 50%;
+}
+
+.transport-content h1 {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'Urbanist', sans-serif;
+    margin-bottom: 20px;
+}
+
+.transport-content p {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1.6;
+    font-weight: 500;
+    font-family: 'Urbanist', sans-serif;
+    margin-bottom: 20px;
+}
+
+.transport-section .cta-btn {
+    background: #a0a0a0; /* Grisé */
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif; /* Police Lato */
+    border-radius: 25px;
+    display: inline-block;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: not-allowed; /* Indique que le bouton n'est pas cliquable */
+    opacity: 0.7; /* Réduit l'opacité pour indiquer l'indisponibilité */
+    position: relative; /* Pour positionner le tooltip */
+    margin-top: 18px;
+}
+
+.transport-section .tooltip {
+    display: none; /* Masqué par défaut */
+    position: absolute;
+    bottom: 100%; /* Positionné au-dessus du bouton */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap; /* Empêche le texte de se déformer */
+    z-index: 10; /* Assure que le tooltip est au-dessus des autres éléments */
+}
+
+.transport-section .cta-btn:hover .tooltip {
+    display: block; /* Affiche le tooltip au survol */
+}
+
+.transport-section .cta-btn:hover {
+    background: #909090;
+}
+
+.transport-image {
+    width: 40%;
+    position: relative;
+}
+
+/* Style similaire aux images de la page agriculture */
+.transport-image img {
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    max-width: 90%;
+    height: auto;
+    animation: smooth-oscillation 3s ease-in-out infinite;
+}
+
+/* Animation d'oscillation douce */
+@keyframes smooth-oscillation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.event-date {
+    font-size: 32px; /* Taille de police initiale */
+    color: #ffffff; /* Couleur du texte initiale (blanc) */
+    text-align: center;
+    margin: 0;
+    position: absolute; /* Garder la position absolue */
+    top: 465px; /* Garder la même valeur pour la position verticale */
+    left: 40%; /* Centrer horizontalement */
+    transform: translateX(-50%); /* Ajuster pour centrer */
+    background: rgba(10, 29, 59, 0.7); /* Couleur de fond initiale */
+    padding: 10px;
+    border-radius: 10px;
+    animation: bounce 1.5s ease-in-out infinite, color-change 3s ease infinite; /* Ajout d'animations continues */
+    z-index: 10;
+}
+
+/* Animation de rebond */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Animation de changement de couleur */
+@keyframes color-change {
+    0% {
+        color: #ffffff; /* Couleur du texte initiale (blanc) */
+        background: rgba(10, 29, 59, 0.7); /* Couleur de fond initiale */
+    }
+    50% {
+        color: #0000ff; /* Couleur du texte (bleu) */
+        background: #ffffff; /* Couleur de fond (blanc) */
+    }
+    100% {
+        color: #ffffff; /* Retour à la couleur du texte initiale (blanc) */
+        background: rgba(10, 29, 59, 0.7); /* Retour à la couleur de fond initiale */
+    }
+}
+
+/* Media Queries pour la responsivité */
+@media (max-width: 768px) {
+    .event-date {
+        font-size: 24px; /* Réduire la taille de la police pour les écrans plus petits */
+        top: 40vh; /* Ajuster la position verticale pour les petits écrans */
+    }
+}
+
+@media (max-width: 480px) {
+    .event-date {
+        font-size: 20px; /* Réduire encore la taille de la police pour les très petits écrans */
+        top: 35vh; /* Ajuster la position verticale pour les très petits écrans */
+    }
+}
+
+/* SECTION MOTORS FESTIVAL */
+.motors-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 93px 10%;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    background: linear-gradient(135deg, #0a1d3b, #000000);
+}
+
+.motors-content {
+    width: 45%;
+}
+
+.motors-content h1 {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'Urbanist', sans-serif;
+    margin-bottom: 20px;
+}
+
+.motors-images {
+    display: grid; /* Utiliser la grille pour les images */
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+    gap: 20px; /* Espace entre les images */
+    width: 45%;
+    position: relative;
+}
+
+.motors-image-main, .motors-image-secondary {
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    animation: smooth-oscillation 4s ease-in-out infinite;
+    width: 100%; /* Prendre toute la largeur de la cellule de la grille */
+    height: 200px; /* Hauteur fixe pour toutes les images */
+    object-fit: cover; /* Remplir le conteneur sans déformation */
+}
+
+.motors-image-secondary {
+    animation-delay: 1s; /* Délai pour l'animation */
+}
+
+.motors-section .cta-btn {
+    background: #a0a0a0; /* Grisé */
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif; /* Police Lato */
+    border-radius: 25px;
+    display: inline-block;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: not-allowed; /* Indique que le bouton n'est pas cliquable */
+    opacity: 0.7; /* Réduit l'opacité pour indiquer l'indisponibilité */
+    position: relative; /* Pour positionner le tooltip */
+    margin-top: 18px;
+}
+
+.motors-section .tooltip {
+    display: none; /* Masqué par défaut */
+    position: absolute;
+    bottom: 100%; /* Positionné au-dessus du bouton */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap; /* Empêche le texte de se déformer */
+    z-index: 10; /* Assure que le tooltip est au-dessus des autres éléments */
+}
+
+.motors-section .cta-btn:hover .tooltip {
+    display: block; /* Affiche le tooltip au survol */
+}
+
+.motors-section .cta-btn:hover {
+    background: #909090;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .motors-images {
+        grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .motors-content h1 {
+        font-size: 24px;
+    }
+
+    .motors-section .cta-btn {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px;
+    }
+}

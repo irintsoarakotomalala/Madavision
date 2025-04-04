@@ -9,6 +9,10 @@
 </head>
 <body>
     <div class="evenement-wrapper">
+        <div class="combined-section" style="position: relative;"> <!-- Ajout de position relative ici -->
+            <div class="event-date fade-in">18 - 21 Septembre 2025</div>
+        </div>
+
         <!-- Section FIA -->
         <section class="fia-section">
             <div class="fia-content">
@@ -24,11 +28,6 @@
                 <img src="../assets/images/pexels-nc-farm-bureau-mark-2252584.jpg" alt="Petite plante" class="image-bottom">
             </div>
         </section>
-
-        <!-- Date -->
-        <div class="date-container">
-            <h2>18 - 21 Septembre 2025</h2>
-        </div>
 
         <!-- Section Gastronomie -->
         <section class="gastronomie-section">
@@ -47,20 +46,17 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const textElements = document.querySelectorAll('.fade-in');
-    
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        // Réinitialiser l'animation
-                        setTimeout(() => {
-                            entry.target.classList.remove('visible');
-                            entry.target.classList.add('fade-in'); // Réajoute la classe pour réinitialiser l'animation
-                        }, 1000); // Durée de l'animation (1 seconde)
+                        // Ne pas réinitialiser l'animation pour éviter les répétitions
+                        observer.unobserve(entry.target);
                     }
                 });
             });
-    
+            
             textElements.forEach(text => {
                 observer.observe(text);
             });
