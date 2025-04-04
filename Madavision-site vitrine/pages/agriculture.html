@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIA - Foire Internationale de l'Agriculture</title>
+    <link rel="stylesheet" href="../assets/css/agriculture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="evenement-wrapper">
+        <!-- Section FIA -->
+        <section class="fia-section">
+            <div class="fia-content">
+                <h1 class="fade-in">🌿 FIA - Foire Internationale de l'Agriculture</h1>
+                <p class="fade-in">La FIA, coorganisée avec le Ministère de l'Agriculture et de l'Élevage, regroupe plus de 300 exposants de toute la ligne des filières agricole, élevage et pêche, de l'île et des îles voisines et accueille plus de 15 000 visiteurs.</p>
+                <button class="cta-btn" disabled>
+                    S'inscrire →
+                    <span class="tooltip">À venir</span>
+                </button>
+            </div>
+            <div class="fia-images">
+                <img src="../assets/images/pexels-asphotograpy-1002703.jpg" alt="Légumes colorés" class="image-top">
+                <img src="../assets/images/pexels-nc-farm-bureau-mark-2252584.jpg" alt="Petite plante" class="image-bottom">
+            </div>
+        </section>
+
+        <!-- Section Gastronomie -->
+        <section class="gastronomie-section">
+            <div class="gastronomie-content">
+                <h1 class="fade-in">🍴 Festival International de la Gastronomie de Madagascar</h1>
+                <p class="fade-in">Des grands chefs internationaux seront invités à ce festival international qui programme des conférences, des concours, masterclass, ainsi que des dégustations culinaires. Le festival sera également la participation des fournisseurs des matériels et des produits culinaires, des corps de métier, des écoles et instituts de formation.</p>
+                <button class="cta-btn" title="À venir">
+                    S'inscrire →
+                    <span class="tooltip">À venir</span>
+                </button>
+            </div>
+            <div class="white-corner"></div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const textElements = document.querySelectorAll('.fade-in');
+    
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Réinitialiser l'animation
+                        setTimeout(() => {
+                            entry.target.classList.remove('visible');
+                            entry.target.classList.add('fade-in'); // Réajoute la classe pour réinitialiser l'animation
+                        }, 1000); // Durée de l'animation (1 seconde)
+                    }
+                });
+            });
+    
+            textElements.forEach(text => {
+                observer.observe(text);
+            });
+        });
+    </script>
+
+</body>
+</html>
