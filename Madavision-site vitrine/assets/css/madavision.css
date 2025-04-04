@@ -29,7 +29,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.75); /* Opacité augmentée de 0.65 à 0.75 */
+    background-color: rgba(0, 0, 0, 0.75);
     z-index: 1;
 }
 
@@ -39,50 +39,50 @@ html, body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px; /* Augmenté pour accommoder plus de cartes */
     position: relative;
     z-index: 2;
-    padding: 3rem; /* Augmentation du padding */
+    padding: 3rem;
 }
 
 /* Texte à gauche */
 .opportunities-content {
     flex: 1;
-    padding-right: 3rem; /* Augmentation du padding */
+    padding-right: 3rem;
     margin-top: -3rem;
-    max-width: 450px; /* Augmentation de la largeur maximale */
+    max-width: 450px;
     opacity: 0;
     transform: translateX(-20px);
     animation: fadeInLeft 0.8s ease forwards;
 }
 
 .section-title {
-    font-family: 'Prompt', sans-serif; /* Police Prompt */
-    font-weight: 700; /* Bold */
-    font-size: 3.5rem; /* Taille augmentée */
-    margin-bottom: 1.5rem; /* Marge augmentée */
+    font-family: 'Prompt', sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .section-description {
-    font-family: 'Urbanist', sans-serif; /* Police Urbanist */
-    font-weight: 600; /* Semi-bold */
-    font-size: 1.4rem; /* Taille augmentée */
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
     line-height: 1.6;
-    margin-bottom: 2.5rem; /* Marge augmentée */
+    margin-bottom: 2.5rem;
     color: white;
 }
 
 .learn-more-btn {
     display: inline-block;
-    padding: 1rem 2.5rem; /* Padding augmenté */
+    padding: 1rem 2.5rem;
     background-color: #155D97;
     color: white;
     text-decoration: none;
     border-radius: 50px;
-    font-family: 'Lato', sans-serif; /* Police Lato */
-    font-weight: 700; /* Bold */
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
     transition: all 0.3s ease;
-    font-size: 1.1rem; /* Taille augmentée */
+    font-size: 1.1rem;
     box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
     position: relative;
     overflow: hidden;
@@ -112,28 +112,28 @@ html, body {
     height: 300%;
 }
 
-/* Grille des événements à droite */
+/* Grille des événements à droite - Modifiée pour 6 cartes */
 .events-grid {
-    flex: 1;
+    flex: 1.5; /* Augmenté pour donner plus d'espace à la grille */
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Changé à 3 colonnes */
     grid-template-rows: repeat(2, 1fr);
-    gap: 2rem; /* Augmentation de l'espace entre les cartes */
-    max-width: 650px; /* Augmentation de la largeur maximale */
+    gap: 1.5rem; /* Légèrement réduit pour accommoder plus de cartes */
+    max-width: 800px; /* Augmenté pour accommoder 3 colonnes */
 }
 
 /* Style des cartes */
 .event-card {
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     position: relative;
     transform: translateY(40px);
     opacity: 0;
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
                 opacity 0.5s ease,
                 box-shadow 0.3s ease;
-    height: 240px; /* Hauteur augmentée */
+    height: 220px; /* Légèrement réduit pour accommoder la nouvelle disposition */
 }
 
 .event-card.visible {
@@ -143,7 +143,7 @@ html, body {
 
 .event-card.hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); /* Ombre plus prononcée au survol */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     z-index: 5;
 }
 
@@ -168,8 +168,8 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)); /* Gradient plus prononcé */
-    opacity: 0.9; /* Opacité augmentée */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+    opacity: 0.9;
     transition: opacity 0.3s ease;
 }
 
@@ -183,11 +183,11 @@ html, body {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 1.5rem; /* Padding augmenté */
+    padding: 1.5rem 1.2rem; /* Légèrement réduit */
     color: white;
     transform: translateY(0);
     transition: transform 0.4s ease;
-    background-color: rgba(0, 0, 0, 0.5); /* Ajout d'un fond noir transparent */
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .event-card:hover .event-title {
@@ -196,15 +196,15 @@ html, body {
 
 .event-title h3 {
     margin: 0;
-    font-family: 'Urbanist', sans-serif; /* Police Urbanist */
-    font-weight: 600; /* Semi-bold */
-    font-size: 1.3rem; /* Taille augmentée */
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem; /* Légèrement réduit */
     line-height: 1.4;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombre du texte plus prononcée */
-    word-wrap: break-word; /* Permet au texte de passer à la ligne */
-    -webkit-hyphens: auto; /* For Safari */
-    hyphens: auto; /* Ajout de tirets pour les mots longs si nécessaire */
-    overflow-wrap: break-word; /* Assure que les mots longs passent à la ligne */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    overflow-wrap: break-word;
 }
 
 /* Animations */
@@ -219,7 +219,19 @@ html, body {
     }
 }
 
-/* Responsive */
+/* Responsive - Mis à jour pour la nouvelle disposition */
+@media (max-width: 1280px) {
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr); /* Retour à 2 colonnes */
+        grid-template-rows: repeat(3, 1fr); /* 3 rangées maintenant */
+        max-width: 650px;
+    }
+    
+    .event-card {
+        height: 200px;
+    }
+}
+
 @media (max-width: 1024px) {
     .container {
         flex-direction: column;
@@ -230,21 +242,23 @@ html, body {
         padding-right: 0;
         margin-top: 0;
         text-align: center;
-        max-width: 700px; /* Largeur maximale augmentée */
+        max-width: 700px;
     }
     
     .events-grid {
         width: 100%;
+        grid-template-columns: repeat(3, 1fr); /* Retour à 3 colonnes */
+        grid-template-rows: repeat(2, 1fr); /* 2 rangées */
     }
     
     .section-title {
-        font-size: 3.2rem; /* Taille adaptée pour tablette */
+        font-size: 3.2rem;
     }
 }
 
 @media (max-width: 768px) {
     .section-title {
-        font-size: 2.8rem; /* Taille adaptée pour petit écran */
+        font-size: 2.8rem;
     }
     
     .section-description {
@@ -252,12 +266,13 @@ html, body {
     }
     
     .events-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+        grid-template-rows: repeat(3, 1fr); /* 3 rangées */
         gap: 1.5rem;
     }
     
     .event-card {
-        height: 200px;
+        height: 180px;
     }
     
     .learn-more-btn {
@@ -281,6 +296,11 @@ html, body {
     
     .learn-more-btn {
         padding: 0.8rem 1.8rem;
+    }
+    
+    .events-grid {
+        grid-template-columns: 1fr; /* 1 colonne */
+        grid-template-rows: repeat(6, 1fr); /* 6 rangées */
     }
     
     .event-title h3 {
