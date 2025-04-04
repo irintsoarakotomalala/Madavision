@@ -52,7 +52,24 @@
 
     });
     //importation de fim.html
-    $("#fim").load("fim.html")
+    $("#fim").load("fim.html",function(){
+        const elementsToAnimate = document.querySelectorAll('.fim-content, .fim-right-container, .decoration-lines, .fim-date-container');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('animate-active');
+                }, index * 200);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    elementsToAnimate.forEach(element => {
+        observer.observe(element);
+    });
+    })
 
   });
     </script>

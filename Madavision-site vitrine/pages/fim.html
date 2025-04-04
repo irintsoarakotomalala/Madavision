@@ -10,7 +10,11 @@
     <section class="fim-section">
         <div class="fim-container">
             <div class="fim-content">
-                <h1 class="fim-title">FIM - Foire International<br>de Madagascar</h1>
+                <h1 class="fim-title">
+                    
+                    🌍 FIM - Foire International<br>de Madagascar
+                
+                </h1>
                 <p class="fim-description">La Foire Internationale de Madagascar (FIM) est l'événement économique incontournable de la région, offrant une plateforme unique pour les échanges commerciaux et les opportunités d'affaires dans tous les secteurs d'activité.</p>
                 <a href="#" class="register-btn">S'inscrire</a>
             </div>
@@ -24,11 +28,31 @@
                     <div class="vertical-line"></div>
                 </div>
                 <div class="fim-date-container">
-                  
                     <div class="fim-date-text">22 - 25<br>Mai 2025</div>
                 </div>
             </div>
         </div>
     </section>
 </body>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const elementsToAnimate = document.querySelectorAll('.fim-content, .fim-right-container, .decoration-lines, .fim-date-container');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('animate-active');
+                }, index * 200);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    elementsToAnimate.forEach(element => {
+        observer.observe(element);
+    });
+});
+</script>
 </html>

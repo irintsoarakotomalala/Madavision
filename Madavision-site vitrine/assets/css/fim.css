@@ -10,14 +10,114 @@ body {
     color: #333;
 }
 
+/* Mise à jour du dégradé pour la section FIM */
 .fim-section {
-    background: linear-gradient( -180deg, #0D092E 85%, #3269bd); /* Dégradé de bleu foncé à bleu plus clair */
+    background: linear-gradient(180deg, #0A052A 70%, #152559 100%);
     color: white;
     width: 100%;
     padding: 3rem 2rem;
     display: flex;
     justify-content: center;
+    overflow: hidden; /* Pour éviter débordement des animations */
 }
+
+/* Animation qui affiche depuis en bas tous les contenus */
+@keyframes slideUp {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* État initial des éléments avant animation */
+.fim-content, .fim-right-container, .decoration-lines, .fim-date-container {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s ease-out;
+}
+
+/* Animation active quand l'élément est visible */
+.animate-active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Ajouter des délais différents pour créer un effet en cascade */
+.fim-right-container.animate-active {
+    transition-delay: 0.2s;
+}
+
+.decoration-lines.animate-active {
+    transition-delay: 0.4s;
+}
+
+.fim-date-container.animate-active {
+    transition-delay: 0.6s;
+}
+
+
+.fim-content {
+    flex: 1;
+    padding-right: 2rem;
+    margin-top: 60px;
+}
+
+.fim-right-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+/* Animation qui fait flotter la photo constamment */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+
+
+.fim-image-container {
+    width: 100%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    animation: float 4s ease-in-out infinite;
+}
+
+.fim-image {
+    width: 100%;
+    height: auto;
+    border-radius: 40px;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Ajout de l'icône avant le titre */
+.fim-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+}
+
 
 .fim-container {
     display: flex;
@@ -49,20 +149,21 @@ body {
 }
 
 .register-btn {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #155D97;
     color: white;
     padding: 0.8rem 2rem; /* Augmentation du width */
-    border: 2px solid rgba(255, 255, 255, 0.7); /* Bordure plus visible */
     border-radius: 50px;
     display: inline-flex;
     align-items: center;
-    font-size: 1rem;
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
     font-weight: 500;
     letter-spacing: 0.5px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ajout d'une ombre */
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif; 
 }
 
 .register-btn:hover {
@@ -107,9 +208,6 @@ body {
     transition: transform 0.5s ease;
 }
 
-.fim-image:hover {
-    transform: scale(1.02); /* Légère animation au survol */
-}
 
 .fim-quote {
     position: absolute;
@@ -145,18 +243,6 @@ body {
     background-color: white;
 }
 
-/* Flèche au bout de la ligne horizontale */
-.horizontal-line::after {
-    content: '';
-    position: absolute;
-    right: -10px;
-    top: -4px;
-    width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-left: 10px solid white;
-    border-bottom: 5px solid transparent;
-}
 
 .vertical-line {
     position: absolute;
