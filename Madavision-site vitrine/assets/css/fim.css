@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Urbanist', sans-serif;
+}
+
+body {
+    background-color: white;
+    color: #333;
+}
+
+.fim-section {
+    background: linear-gradient( -180deg, #0D092E 85%, #3269bd); /* Dégradé de bleu foncé à bleu plus clair */
+    color: white;
+    width: 100%;
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.fim-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.fim-content {
+    flex: 1;
+    padding-right: 2rem;
+    margin-top: 60px;
+}
+
+.fim-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.fim-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.register-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 0.8rem 2rem; /* Augmentation du width */
+    border: 2px solid rgba(255, 255, 255, 0.7); /* Bordure plus visible */
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ajout d'une ombre */
+}
+
+.register-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.register-btn::after {
+    content: "→"; /* Remplace la ligne par une flèche */
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.register-btn:hover::after {
+    transform: translateX(5px); /* Animation de la flèche au survol */
+}
+
+.fim-right-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.fim-image-container {
+    width: 100%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Ajout d'ombre à l'image */
+}
+
+.fim-image {
+    width: 100%;
+    height: auto;
+    border-radius: 40px;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.fim-image:hover {
+    transform: scale(1.02); /* Légère animation au survol */
+}
+
+.fim-quote {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(5, 10, 36, 0.7); /* Plus foncé pour meilleure lisibilité */
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    font-style: italic;
+    border-radius: 10px 0 40px 0;
+}
+
+.fim-date-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    position: relative;
+    right: 280px;
+    bottom: 25px;
+}
+
+.decoration-lines {
+    position: relative;
+    margin-bottom: 12px;
+    left: 30px;
+}
+
+.horizontal-line {
+    position: relative;
+    width: 280px;
+    height: 3px;
+    background-color: white;
+}
+
+/* Flèche au bout de la ligne horizontale */
+.horizontal-line::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-left: 10px solid white;
+    border-bottom: 5px solid transparent;
+}
+
+.vertical-line {
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    width: 3px;
+    height: 280px;
+    background-color: white;
+}
+
+.fim-date-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Écrans larges - contenu augmente progressivement */
+@media screen and (min-width: 1600px) {
+    .fim-container {
+        max-width: 75%;
+    }
+    
+    .fim-title {
+        font-size: calc(2.2rem + 0.2vw);
+    }
+    
+    .fim-description {
+        font-size: calc(1rem + 0.1vw);
+    }
+    
+    .fim-date-text {
+        font-size: calc(1.8rem + 0.15vw);
+    }
+    
+    .horizontal-line {
+        width: calc(280px + 0.5vw);
+    }
+    
+    .vertical-line {
+        height: calc(280px + 0.3vw);
+        bottom: calc(8px - 0.3vw);
+    }
+}
+
+/* Responsive design pour tablettes */
+@media screen and (max-width: 1200px) {
+    .fim-container {
+        padding: 0 1rem;
+    }
+    
+    .fim-title {
+        font-size: 1.8rem;
+    }
+    .horizontal-line {
+        width: calc(180px + 0.5vw);
+    }
+    
+    .vertical-line {
+        height: calc(180px + 0.3vw);
+        bottom: calc(5px - 0.3vw);
+    }
+    .fim-date-container {
+        right: 170px;
+    }
+}
+
+/* Responsive design pour mobile */
+@media screen and (max-width: 768px) {
+    .fim-container {
+        flex-direction: column;
+    }
+    
+    .fim-content {
+        padding-right: 0;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+    
+    .fim-right-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .fim-section {
+        padding: 2rem 1rem;
+    }
+    
+    .fim-title {
+        font-size: 1.5rem;
+    }
+    
+    .fim-description {
+        font-size: 0.9rem;
+    }
+    
+    .fim-date-text {
+        font-size: 1.5rem;
+    }
+
+    .decoration-lines {
+        margin-right: 10px;
+    }
+
+    .horizontal-line {
+        width: 180px;
+    }
+    
+    .vertical-line {
+        height: 180px;
+        bottom: 0px;
+    }
+}

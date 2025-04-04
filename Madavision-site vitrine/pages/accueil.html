@@ -8,7 +8,52 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
          $(document).ready(function() {
-    $("#madavision").load("madavision.html");
+         $("#madavision").load("madavision.html",function(){
+        const cards = document.querySelectorAll('.event-card');
+    
+    // Animation d'apparition des cartes
+    function animateCards() {
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, index * 150);
+        });
+    }
+    
+    // Lancer l'animation après un court délai
+    setTimeout(animateCards, 300);
+    
+    // Effet hover amélioré
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.classList.add('hover');
+        });
+        card.addEventListener('mouseleave', function() {
+            this.classList.remove('hover');
+        });
+    });
+    
+    // Animation au scroll (effet d'apparition)
+    function checkScroll() {
+        const triggerBottom = window.innerHeight * 0.9;
+        
+        cards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            
+            if (cardTop < triggerBottom) {
+                card.classList.add('visible');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', checkScroll);
+    checkScroll(); // Vérifier au chargement initial
+
+
+    });
+    //importation de fim.html
+    $("#fim").load("fim.html")
+
   });
     </script>
     <link rel="stylesheet" href="../assets/css/acceuil.css">
@@ -106,6 +151,7 @@
     </div>
 
     <div id="madavision"></div>
+    <div id="fim"></div>
 
     <script>
         // Créer des étoiles pour le fond
