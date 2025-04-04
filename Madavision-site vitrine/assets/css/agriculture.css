@@ -1,0 +1,456 @@
+/* Général */
+body {
+    font-family: 'Urbanist', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* Animation d'apparition douce */
+@keyframes fade-in {
+    0% {
+        opacity: 0; /* Commence invisible */
+        transform: translateY(20px); /* Déplace légèrement vers le bas */
+    }
+    100% {
+        opacity: 1; /* Devient visible */
+        transform: translateY(0); /* Retourne à sa position d'origine */
+    }
+}
+
+.fade-in {
+    opacity: 0; /* Commence invisible */
+    animation: fade-in 1s ease forwards; /* Applique l'animation */
+}
+
+.fade-in.visible {
+    opacity: 1; /* Devient visible */
+    transform: translateY(0); /* Retourne à sa position d'origine */
+}
+
+/* Conteneur principal pour les sections */
+.evenement-wrapper {
+    background-color: #f8f8f8; /* Fond commun */
+    padding-bottom: 40px; /* Espace en bas */
+}
+
+/* SECTION FIA - DESIGN ORIGINAL */
+.fia-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 93px 10%;
+    background: linear-gradient(135deg, #e0f7fa, #c8e6c9);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.fia-content {
+    width: 45%;
+}
+
+.fia-content h1 {
+    color: #2e7d32;
+    font-size: 28px;
+    font-weight: 700; /* Urbanist Bold */
+    font-family: 'Urbanist', sans-serif;
+    margin-bottom: 20px; /* Augmenté pour plus d'espace */
+}
+
+.fia-content p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+    font-weight: 500; /* Urbanist Medium */
+    font-family: 'Urbanist', sans-serif;
+    margin-bottom: 20px; /* Augmenté pour plus d'espace */
+}
+
+/* Bouton CTA - version grisée et non cliquable pour la section FIA */
+.fia-section .cta-btn {
+    background: #a0a0a0; /* Grisé */
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif; /* Police Lato */
+    border-radius: 25px;
+    display: inline-block;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: not-allowed; /* Indique que le bouton n'est pas cliquable */
+    opacity: 0.7; /* Réduit l'opacité pour indiquer l'indisponibilité */
+    position: relative; /* Pour positionner le tooltip */
+    margin-top: 18px;
+}
+
+.fia-section .tooltip {
+    display: none; /* Masqué par défaut */
+    position: absolute;
+    bottom: 100%; /* Positionné au-dessus du bouton */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap; /* Empêche le texte de se déformer */
+    z-index: 10; /* Assure que le tooltip est au-dessus des autres éléments */
+}
+
+.fia-section .cta-btn:hover .tooltip {
+    display: block; /* Affiche le tooltip au survol */
+}
+
+.fia-images {
+    position: relative;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animation d'oscillation douce */
+@keyframes smooth-oscillation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Déplace légèrement vers le haut */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.fia-images img {
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    max-width: 100%;
+    height: auto;
+    animation: smooth-oscillation 3s ease-in-out infinite; /* Applique l'animation */
+}
+
+.image-top {
+    width: 280px;
+    position: relative;
+    z-index: 2;
+}
+
+.image-bottom {
+    width: 220px;
+    position: absolute;
+    top: 80px;
+    left: -50px;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+/* SECTION DATE AU MILIEU */
+.date-container {
+    position: absolute; /* Positionnement absolu */
+    top: 50%; /* Ajustez cette valeur pour déplacer verticalement */
+    left: 50%; /* Centre horizontalement */
+    transform: translate(-50%, -50%); /* Centre parfaitement */
+    background: rgba(255, 255, 255, 0.9); /* Fond blanc avec une légère transparence */
+    color: #155D97; /* Couleur du texte */
+    padding: 10px 20px; /* Espace intérieur */
+    border-radius: 10px; /* Coins arrondis */
+    text-align: center; /* Centre le texte */
+    z-index: 1; /* Assure que la date est au-dessus des sections */
+    animation: fade-in 1s ease forwards, pulse 2s infinite; /* Ajoute l'animation d'apparition et de pulsation */
+}
+
+.date-container h2 {
+    font-size: 32px; /* Taille de la police */
+    margin: 0; /* Supprime la marge par défaut */
+    font-family: 'Urbanist', sans-serif; /* Police */
+    font-weight: 700; /* Gras */
+}
+
+/* Animation de pulsation */
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05); /* Légère augmentation de la taille */
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* SECTION GASTRONOMIE - HARMONISÉE AVEC LA SECTION FIA */
+.gastronomie-section {
+    display: flex;
+    align-items: center;
+    padding: 60px 10%; /* Même padding que la section FIA */
+    background-image: url("../images/Group 29.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Comme la section FIA */
+}
+
+.gastronomie-content {
+    width: 45%; /* Même largeur que dans la section FIA */
+    position: relative;
+    z-index: 2;
+}
+
+.gastronomie-content h1 {
+    color: #ffffff;
+    font-size: 28px; /* Même taille que dans la section FIA */
+    font-weight: 700; /* Urbanist Bold */
+    font-family: 'Urbanist', sans-serif;
+    margin-bottom: 15px; /* Même que FIA */
+}
+
+.gastronomie-content p {
+    font-size: 16px; /* Même taille que dans la section FIA */
+    color: #ffffff;
+    line-height: 1.6;
+    font-weight: 500; /* Urbanist Medium */
+    font-family: 'Urbanist', sans-serif;
+    margin-bottom: 20px; /* Augmenté pour plus d'espace */
+}
+
+/* Bouton CTA pour la section gastronomie - grisé */
+.gastronomie-section .cta-btn {
+    background: #a0a0a0; /* Grisé */
+    border: none;
+    padding: 14px 28px; /* Même padding que la section FIA */
+    font-size: 16px; /* Même taille que la section FIA */
+    color: white;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif; /* Même police que la section FIA */
+    border-radius: 25px;
+    display: inline-block;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: not-allowed; /* Indique que le bouton n'est pas cliquable */
+    opacity: 0.7; /* Réduit l'opacité pour indiquer l'indisponibilité */
+    margin-top: 20px; /* Augmenté pour plus d'espace */
+    position: relative; /* Pour positionner le tooltip */
+}
+
+.gastronomie-section .tooltip {
+    display: none; /* Masqué par défaut */
+    position: absolute;
+    bottom: 100%; /* Positionné au-dessus du bouton */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap; /* Empêche le texte de se déformer */
+    z-index: 10; /* Assure que le tooltip est au-dessus des autres éléments */
+}
+
+.gastronomie-section .cta-btn:hover .tooltip {
+    display: block; /* Affiche le tooltip au survol */
+}
+
+/* Le coin blanc en bas à droite */
+.white-corner {
+    position: absolute;
+    bottom: 40px; /* Ajustez cette valeur pour déplacer verticalement */
+    right: 350px; /* Diminuez cette valeur pour déplacer vers la gauche */
+    width: 6px; /* Augmentez cette valeur pour rendre le coin plus épais (vertical) */
+    height: 150px; /* Augmentez cette valeur pour changer la hauteur du coin */
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 2;
+}
+
+.white-corner::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 150px; /* Augmentez cette valeur pour changer la largeur du coin (horizontal) */
+    height: 6px; /* Augmentez cette valeur pour rendre le coin plus épais (horizontal) */
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Ajout d'un effet de survol pour les boutons */
+.cta-btn:hover {
+    opacity: 0.5; /* Réduit l'opacité au survol */
+}
+
+/* MEDIA QUERIES POUR LA RESPONSIVITÉ - Harmonisé avec les media queries de la section FIA */
+@media screen and (max-width: 1200px) {
+    .gastronomie-section {
+        padding: 40px 5%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .gastronomie-content h1 {
+        font-size: 24px;
+    }
+    
+    .gastronomie-content p {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Gastronomie section responsive */
+    .gastronomie-section {
+        flex-direction: column;
+        padding: 30px 5%;
+        text-align: center;
+    }
+    
+    .gastronomie-content {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+    
+    .white-corner {
+        right: 20px;
+        bottom: 20px;
+        width: 1px;
+        height: 80px;
+    }
+    
+    .white-corner::after {
+        width: 80px;
+        height: 1px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gastronomie-section {
+        padding: 25px 4%;
+    }
+    
+    .gastronomie-content h1 {
+        font-size: 22px;
+    }
+    
+    .gastronomie-content p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .gastronomie-section .cta-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    .fia-section {
+        flex-direction: column;
+        padding: 60px 5%;
+        text-align: center;
+    }
+
+    .fia-content, .fia-images {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .fia-content h1 {
+        font-size: 24px;
+    }
+
+    .fia-content p {
+        font-size: 15px;
+    }
+
+    .image-top {
+        width: 220px;
+    }
+
+    .image-bottom {
+        width: 180px;
+        top: 60px;
+        left: -30px;
+    }
+
+    .date-container h2 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .fia-section,
+    .gastronomie-section {
+        flex-direction: column;
+        padding: 40px 5%;
+        text-align: center;
+    }
+
+    .fia-content, .gastronomie-content,
+    .fia-images {
+        width: 100%;
+    }
+
+    .cta-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .white-corner {
+        bottom: 20px;
+        right: 20px;
+        width: 4px;
+        height: 100px;
+    }
+
+    .white-corner::after {
+        width: 100px;
+        height: 4px;
+    }
+
+    .date-container {
+        padding: 8px 16px;
+    }
+
+    .date-container h2 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .fia-content h1,
+    .gastronomie-content h1 {
+        font-size: 20px;
+    }
+
+    .fia-content p,
+    .gastronomie-content p {
+        font-size: 14px;
+    }
+
+    .image-top {
+        width: 180px;
+    }
+
+    .image-bottom {
+        width: 140px;
+        top: 40px;
+        left: -20px;
+    }
+
+    .cta-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .date-container h2 {
+        font-size: 18px;
+    }
+}
