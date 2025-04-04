@@ -11,7 +11,7 @@ body {
 }
 
 .fim-section {
-    background: linear-gradient( -180deg, #0D092E 85%, #3269bd); /* Dégradé de bleu foncé à bleu plus clair */
+    background: linear-gradient( -180deg, #0D092E 85%, #326abdaf); /* Dégradé de bleu foncé à bleu plus clair */
     color: white;
     width: 100%;
     padding: 3rem 2rem;

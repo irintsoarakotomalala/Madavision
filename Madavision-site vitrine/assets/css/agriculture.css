@@ -40,7 +40,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 60px 10%;
+    padding: 93px 10%;
     background: linear-gradient(135deg, #e0f7fa, #c8e6c9);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -151,45 +151,38 @@ body {
 }
 
 /* SECTION DATE AU MILIEU */
-.date-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-    background-color: #e6f0e6;
-}
-
 .date-container {
-    background: #006699;
-    color: white;
-    padding: 15px 30px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    position: absolute; /* Positionnement absolu */
+    top: 50%; /* Ajustez cette valeur pour déplacer verticalement */
+    left: 50%; /* Centre horizontalement */
+    transform: translate(-50%, -50%); /* Centre parfaitement */
+    background: rgba(255, 255, 255, 0.9); /* Fond blanc avec une légère transparence */
+    color: #155D97; /* Couleur du texte */
+    padding: 10px 20px; /* Espace intérieur */
+    border-radius: 10px; /* Coins arrondis */
+    text-align: center; /* Centre le texte */
+    z-index: 1; /* Assure que la date est au-dessus des sections */
+    animation: fade-in 1s ease forwards, pulse 2s infinite; /* Ajoute l'animation d'apparition et de pulsation */
 }
 
 .date-container h2 {
-    font-size: 32px;
-    margin: 0;
-    font-family: 'Urbanist', sans-serif;
-    font-weight: 700; /* Bold */
-    color: #ffffff;
+    font-size: 32px; /* Taille de la police */
+    margin: 0; /* Supprime la marge par défaut */
+    font-family: 'Urbanist', sans-serif; /* Police */
+    font-weight: 700; /* Gras */
 }
 
-.date-container h3 {
-    font-size: 24px;
-    margin: 0;
-    font-family: 'Urbanist', sans-serif;
-    font-weight: 500; /* Medium */
-    color: #ffffff;
-}
-
-.date-container h4 {
-    font-size: 20px;
-    margin: 0;
-    font-family: 'Urbanist', sans-serif;
-    font-weight: 500; /* Medium */
-    color: #ffffff;
+/* Animation de pulsation */
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05); /* Légère augmentation de la taille */
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 /* SECTION GASTRONOMIE - HARMONISÉE AVEC LA SECTION FIA */
@@ -352,5 +345,112 @@ body {
     .gastronomie-section .cta-btn {
         padding: 12px 24px;
         font-size: 14px;
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    .fia-section {
+        flex-direction: column;
+        padding: 60px 5%;
+        text-align: center;
+    }
+
+    .fia-content, .fia-images {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .fia-content h1 {
+        font-size: 24px;
+    }
+
+    .fia-content p {
+        font-size: 15px;
+    }
+
+    .image-top {
+        width: 220px;
+    }
+
+    .image-bottom {
+        width: 180px;
+        top: 60px;
+        left: -30px;
+    }
+
+    .date-container h2 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .fia-section,
+    .gastronomie-section {
+        flex-direction: column;
+        padding: 40px 5%;
+        text-align: center;
+    }
+
+    .fia-content, .gastronomie-content,
+    .fia-images {
+        width: 100%;
+    }
+
+    .cta-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .white-corner {
+        bottom: 20px;
+        right: 20px;
+        width: 4px;
+        height: 100px;
+    }
+
+    .white-corner::after {
+        width: 100px;
+        height: 4px;
+    }
+
+    .date-container {
+        padding: 8px 16px;
+    }
+
+    .date-container h2 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .fia-content h1,
+    .gastronomie-content h1 {
+        font-size: 20px;
+    }
+
+    .fia-content p,
+    .gastronomie-content p {
+        font-size: 14px;
+    }
+
+    .image-top {
+        width: 180px;
+    }
+
+    .image-bottom {
+        width: 140px;
+        top: 40px;
+        left: -20px;
+    }
+
+    .cta-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .date-container h2 {
+        font-size: 18px;
     }
 }
