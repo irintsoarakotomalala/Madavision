@@ -86,12 +86,8 @@ body {
         transform: translateY(0px);
     }
 }
-
-
-
-
 .fim-image-container {
-    width: 100%;
+    width: 80%;
     position: relative;
     border-radius: 10px;
     overflow: hidden;
@@ -191,14 +187,7 @@ body {
     align-items: flex-end;
 }
 
-.fim-image-container {
-    width: 100%;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Ajout d'ombre à l'image */
-}
+
 
 .fim-image {
     width: 100%;

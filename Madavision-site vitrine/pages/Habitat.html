@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>salon de l'habitat et de la technologie</title>
+    <style>
+      
+    </style>
+    <link rel="stylesheet" href="../assets/css/habitat.css">
+</head>
+<body>
+   <!-- Section Salon de l'habitat -->
+<section class="habitat-section">
+    <div class="habitat-container">
+        <div class="habitat-content">
+            <h1 class="habitat-title">
+                🏠 Salon International de l'habitat<br>
+                et salon international de la<br>
+                technologie et de l'innovation
+            </h1>
+            <p class="habitat-description">L'événement qui incarne l'innovation et l'engagement du secteur du bâtiment et de l'immobilier face aux besoins d'accompagnement, d'adaptation et de maintenance de l'aménagement d'un logement.</p>
+            <a href="#" class="register-btn">S'inscrire</a>
+        </div>
+        <div class="habitat-right-container">
+            <div class="habitat-image-container">
+                <img class="habitat-image" src="../assets/images/Group 22.png" alt="Salon de l'habitat - Travailleur avec outil">
+            </div>
+            <div class="habitat-decoration-lines">
+                <div class="habitat-horizontal-line"></div>
+                <div class="habitat-vertical-line"></div>
+            </div>
+            <div class="habitat-date-container">
+                <div class="habitat-date-text">23 - 26<br>Octobre 2025</div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get all animatable elements
+    const habitatSection = document.querySelector('.habitat-section');
+    
+    if (habitatSection) {
+        // Elements to animate in sequence
+        const animatableElements = [
+            habitatSection.querySelector('.habitat-content'),
+            habitatSection.querySelector('.habitat-right-container'),
+            habitatSection.querySelector('.habitat-decoration-lines'),
+            habitatSection.querySelector('.habitat-date-container')
+        ];
+        
+        // Create the observer with more sensitive threshold for smoother trigger
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                // Staggered animation with smoother timing
+                animatableElements.forEach((element, index) => {
+                    if (element) {
+                        // Progressive delay for cascading effect
+                        setTimeout(() => {
+                            element.classList.add('animate-active');
+                        }, index * 250); // More natural timing between elements
+                    }
+                });
+                
+                // Only trigger once
+                observer.unobserve(habitatSection);
+            }
+        }, { 
+            threshold: 0.15, // Trigger slightly earlier when scrolling
+            rootMargin: "0px 0px -100px 0px" // Negative bottom margin to trigger before fully in view
+        });
+        
+        // Start observing
+        observer.observe(habitatSection);
+    }
+});
+</script>
+</body>
+</html>

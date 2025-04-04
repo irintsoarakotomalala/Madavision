@@ -71,6 +71,29 @@
     });
     })
 
+
+    $("#fia").load("agriculture.html",function(){
+        const textElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Réinitialiser l'animation
+                setTimeout(() => {
+                    entry.target.classList.remove('visible');
+                    entry.target.classList.add('fade-in'); // Réajoute la classe pour réinitialiser l'animation
+                }, 1000); // Durée de l'animation (1 seconde)
+            }
+        });
+    });
+
+    textElements.forEach(text => {
+        observer.observe(text);
+    });
+    });
+
+
   });
     </script>
     <link rel="stylesheet" href="../assets/css/acceuil.css">
@@ -169,6 +192,7 @@
 
     <div id="madavision"></div>
     <div id="fim"></div>
+    <div id="fia"></div>
 
     <script>
         // Créer des étoiles pour le fond
